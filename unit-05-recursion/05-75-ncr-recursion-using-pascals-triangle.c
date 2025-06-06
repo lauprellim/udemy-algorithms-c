@@ -9,7 +9,6 @@
 // remember that 0 <= r <= n
 
 // straightforward factorial function
-// even so these functions seem to throw a segmentation fault!
 
 int fact(int n) {
   if(n==0) return 1;
@@ -34,7 +33,7 @@ int nCrRec(int n, int r) {
 
 int main() {
   // first obtain solution using fact()
-  // printf("Solution of 5C10 using nCr(): %d", nCr(5,10));
-  printf("Solution of 5c10 using nCrRec(): %d", nCrRec(5,10));
+  // printf("Solution of 5C10 using nCr(): %d\n", nCr(10,5));
+  printf("Solution of 5c10 using nCrRec(): %d\n", nCrRec(10,5));
   return 0;
 }
