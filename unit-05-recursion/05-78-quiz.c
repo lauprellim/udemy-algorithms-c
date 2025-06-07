@@ -1,43 +1,60 @@
 #include<stdio.h>
 
-int f(int n) {
+int q1(int n) {
   static int i = 1;
   if (n>=5) return n;
   // printf("n equals %d\n",n);
   n = n+i;
   i++;
-  return f(n);
+  return q1(n);
 }
 
-void foo(int n, int sum) {
+void q2(int n, int sum) {
   int k=0, j=0;
   if(n==0) return;
   k=n%10;
   j=n/10;
   sum = sum+k;
-  foo(j,sum);
+  q2(j,sum);
   printf("Partial sum: %d\n",k);
 }
 
-int q3(int &x, int c) {
-  int c = c - 1;
-  if(c==0) return 1;
-  int x = x + 1;
-  return q3(x,c)*x;
+int q4(int n) {
+  int x=1, k;
+  if(n==1) return x;
+  for(k=1; k<n; ++k) x = x + q4(k) * q4(n-k);
+  return x;
+}
+
+void q5(int n) {
+  // in the questions, this function is called count().
+  static int d=1;
+  printf("%d ", n);
+  printf("%d ", d);
+  d++;
+  if(n>1) q5(n-1);
+  printf("%d ", d);
 }
 
 int main() {
   // question 1
-  printf("Question 1: The value f(1) returns is: %d\n\n", f(1));
+  printf("Question 1: The value q1(1) returns is: %d\n\n", q1(1));
 
   // question 2
   int a = 2048, sum = 0;
-  foo(a, sum);
+  q2(a, sum);
   printf("Question 2: Sum is %d\n\n", sum);
 
-  // question 3
-  int p = 5;
-  printf("Question 3: return value of p is: %d\n", q3(&p,p));
+  // question 3 has to be done in c++ because the function
+  // is pass by reference using &.
 
+  // question 4
+  printf("Question 4: return value of q4(5) is: %d\n\n", q4(5));
+  
+  // question 5
+  printf("Question 5: q5(3) produces: \n");
+  q5(3);
+  printf("\n\n");
+  
   return 0;
 }
