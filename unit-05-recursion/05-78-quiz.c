@@ -1,6 +1,7 @@
 #include<stdio.h>
 
 int q1(int n) {
+  // this is static, so it only gets called ONCE!
   static int i = 1;
   if (n>=5) return n;
   // printf("n equals %d\n",n);
