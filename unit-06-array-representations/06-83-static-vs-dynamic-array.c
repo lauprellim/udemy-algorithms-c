@@ -21,5 +21,7 @@ int main(){
   for(i=0;i<5;i++) printf("%d ",p[i]);
   printf("\n\n");
 
+  free(p);
+  
   return 0;  
 }
