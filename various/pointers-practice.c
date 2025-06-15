@@ -1,6 +1,5 @@
 #include<stdio.h>
 
-
 void pp(int *n) {
   printf("Inside pp function where n is passed as *n.\n");
   printf("Dereferenced value of *n is %d\n", *n);
@@ -11,9 +10,11 @@ void pp(int *n) {
 void pa(int *A, int x) {
   int i;
   for ( i = 0; i < x; i++) {
-    printf("Array value %d is %d\n", i, A[i]);
+    printf("Array value %d is %d using A[i] call.\n", i, A[i]);
+    printf("Array value %d is %d using *(A+i) call.\n\n", i, *(A+i));
   }
   printf("\n");
+
 }
 
 void ma(int *A, int x) {
