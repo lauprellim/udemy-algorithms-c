@@ -207,6 +207,8 @@ int main() {
   display(first);
   insert(first, 4, 999);
   display(first);
+  insert(first, count(first), 42);
+  display(first);
   
   return 0;
 }
