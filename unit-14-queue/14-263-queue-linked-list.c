@@ -1,3 +1,9 @@
+/* implementation of a queue using linked list
+   Fixed a problem in the display func: we must
+   initially point p on front or else we get some
+   bad stuff!
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -41,6 +47,7 @@ int dequeue(){
 
 void display(){
   struct Node *p;
+  p = front;
   while(p){
     printf("%d ", p->data);
     p = p->next;
