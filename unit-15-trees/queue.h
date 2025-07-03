@@ -1,5 +1,4 @@
-#ifndef Queue_h
-#define Queue_h
+#include<stdlib.h>
 
 // tree node
 struct Node{
@@ -13,17 +12,17 @@ struct Queue{
   int front;
   int rear;
   // going to store pointer of type Node
-  Node **Q;
+  struct Node **Q;
 };
 
 void create(struct Queue *q, int size){
   q->size = size;
   q->front = q->rear = 0;
   // careful here!
-  q->Q = (Node **)malloc(q->size * sizeof(Node *));
+  q->Q = (struct Node **)malloc(q->size * sizeof(struct Node *));
 }
 
-void enqueue(struct Queue *q, Node *){
+void enqueue(struct Queue *q, struct Node *x){
   if((q->rear + 1) % q->size == q->front) printf("Queue is full...\n");
   else{
     q->rear = (q->rear + 1) % q->size;
@@ -31,8 +30,8 @@ void enqueue(struct Queue *q, Node *){
   }
 }
 
-Node * dequeue(struct Queue *q){
-  Node* x = NULL;
+struct Node * dequeue(struct Queue *q){
+  struct Node* x = NULL;
   if(q->front == q->rear) printf("Queue is empty...\n");
   else{
     q->front = (q->front + 1) % q->size;
@@ -41,6 +40,6 @@ Node * dequeue(struct Queue *q){
   return x;
 }
 
-isEmpty(struct Queue q){
+int isEmpty(struct Queue q){
   return q.front == q.rear;
 }

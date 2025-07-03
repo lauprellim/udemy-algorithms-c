@@ -25,7 +25,7 @@ void treeCreate(){
 
   while(!isEmpty(q)) {
     p = dequeue(&q);
-    printf("Enter left child: ");
+    printf("Enter left child of %d: ", p->data);
     scanf("%d", &x);
     if(x != -1) {
       // create a node
@@ -36,10 +36,10 @@ void treeCreate(){
       p->lchild = t;
       enqueue(&q, t);
     }
-    printf("Enter right child: ");
+    printf("Enter right child of %d: ", p->data);
     scanf("%d", &x);
     if(x != -1){
-      t = struct Node *)malloc(sizeof(struct Node));
+      t = (struct Node *)malloc(sizeof(struct Node));
     t->data = x;
     t->lchild = t->rchild = NULL;
     p->rchild = t;
@@ -57,10 +57,39 @@ void preorder(struct Node *p){
   }
 }
 
+// inorder traversal
+void inorder(struct Node *p){
+  if(p) {
+    inorder(p->lchild);
+    printf("%d ", p->data);
+    inorder(p->rchild);
+  }
+}
+
+// postorder traversal
+void postorder(struct Node *p){
+  if(p) {
+    postorder(p->lchild);
+    postorder(p->rchild);
+    printf("%d ", p->data);
+  }
+}
+
 int main(){
-  
+  printf("Enter values of elements in a binary tree. Enter -1 to indicate leaf node.\n");
   treeCreate();
+  
+  printf("Preorder traversal -> ");
   preorder(root);
+  printf("\n");
+  
+  printf("Inorder traversal -> ");
+  inorder(root);
+  printf("\n");
+  
+  printf("Postorder traversal -> ");
+  postorder(root);
+  printf("\n");
   
   return 0;
 }
