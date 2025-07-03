@@ -1,6 +1,7 @@
-#include<stdio.h>
-#ifdef queue-cpp.cpp
-#define queue-cpp.cpp
+#include<iostream>
+using namespace std;
+#ifdef queue-cpp.h
+#define queue-cpp.h
 
 class Node {
 public:
@@ -14,15 +15,17 @@ private:
   int front;
   int rear;
   int size;
-  // this was int *Q. Now it is Node **Q as it was already a pointer.
+  // In C this was int *Q. Now it is Node **Q as it was already a pointer.
   // Queue pointer stores ADDRESSES of a tree.
   Node **Q;
 public:
   // parameterized and non-parameterized constructors
+  // Queue stores the addresses of the tree.
   Queue(){ front = rear = -1; size = 10; Q = new Node*[size]; }
   Queue(int size){ front = rear = -1; this->size = size; Q = new Node*[this->size]; }
   void enqueue(Node* x);
   Node* dequeue();
+  int isEmpty() { return front == rear; }
   void display();  
 };
 
@@ -49,19 +52,4 @@ void Queue::display(){
   cout<<endl;
 }
 
-int main(){
-
-  queue q(5);
-  q.enqueue(10);
-  q.enqueue(20);
-  q.enqueue(30);
-  q.enqueue(40);
-
-  q.display();
-
-  cout<<"Dequeuing element: "<<q.dequeue()<<endl;
-
-  q.display();
-  
-  return 0;
-}
+#endif /* queue-cpp.cpp */

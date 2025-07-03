@@ -1,0 +1,28 @@
+# Compiler and flags
+CC = g++
+CFLAGS = -Wall -Wextra -g
+
+# Target executable
+TARGET = 15-287
+
+# Source files
+SRCS = 15-287-create-basic-binary-tree.cpp
+OBJS = $(SRCS:.c=.o)
+
+# Default target
+all: $(TARGET)
+
+# Rule to build the target
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
+
+# Rule to compile .c files into .o files
+%.o: %.c queue-cpp.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Clean up build files
+clean:
+	rm -f $(OBJS) $(TARGET)
+
+# Phony targets
+.PHONY: all clean
