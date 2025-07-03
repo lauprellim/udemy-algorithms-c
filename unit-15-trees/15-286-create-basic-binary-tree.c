@@ -6,7 +6,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 // our custom circular queue include
-#include"queue.h"
+#include"queue-c.h"
 
 // global variable
 struct Node *root = NULL;
