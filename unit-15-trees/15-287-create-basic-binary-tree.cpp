@@ -1,23 +1,33 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<iostream>
+using namespace std;
 #include "queue-cpp.h"
 
 class Tree{
-public:
+  // the "dummy" functions below allow us to make root private.
+private:
   Node *root;
+  
+public:
   // constructors
   Tree() { root = NULL; }
 
   // takes no parameter because root is available inside tree itself
   void CreateTree();
+  // non-parameterized, overloaded function so that root can be private.
+  // a "dummy" function
+  void Preorder() { Preorder(root); }
   void Preorder(Node *p);
+  void Inorder() { Inorder(root); }
   void Inorder(Node *p);
+  void Postorder() { Postorder(root); }
   void Postorder(Node *p);
+  void Levelorder() { Levelorder(root); }
   void Levelorder(Node *p);
-  void Height(Node *foog);
+  int Height() { return Height(root); }
+  int Height(Node *p);
 };
-
 
 // this is the same as in the c program
 void Tree::CreateTree(){
@@ -32,7 +42,7 @@ void Tree::CreateTree(){
   root->lchild = root->rchild = NULL;
   q.enqueue(root);
 
-  while(!isEmpty()) {
+  while(!q.isEmpty()) {
     p = q.dequeue();;
     printf("Enter left child of %d: ", p->data);
     scanf("%d", &x);
@@ -75,19 +85,19 @@ void Tree::Inorder(struct Node *p) {
 
 void Tree::Postorder(struct Node *p){
   if(p){
-    printf("%d ", p->data);
     Postorder(p->lchild);
     Postorder(p->rchild);
+    printf("%d ", p->data);
   }
 }
 
-void Tree::LevelOrder(struct Node *root) {
+void Tree::Levelorder(struct Node *root) {
   Queue q(100);
 
   printf("%d ", root->data);
   q.enqueue(root);
 
-  while(!q.isEmpty) {
+  while(!q.isEmpty()) {
     root = q.dequeue();
     if(root->lchild) {
       printf("%d ", root->lchild->data);
@@ -100,8 +110,8 @@ void Tree::LevelOrder(struct Node *root) {
   }  
 }
 
-int Tree:Height(struct Node *root) {
-  int x=0; y=0;
+int Tree::Height(struct Node *root) {
+  int x=0, y=0;
   if(root == 0) return 0;
   x = Height(root->lchild);
   y = Height(root->rchild);
@@ -110,6 +120,29 @@ int Tree:Height(struct Node *root) {
 }
 
 int main(){
+  Tree t;
+  t.CreateTree();
+  // since root is public, I can do this:
+  cout<<"Preorder -> ";
+  t.Preorder();
+  // if root is public, you have to do this:
+  // t.Preorder(t.root);
+  cout<<endl;
+
+  cout<<"Inorder -> ";
+  t.Inorder();
+  cout<<endl;
+
+  cout<<"Postorder -> ";
+  t.Postorder();
+  cout<<endl;
   
+  cout<<"Levelorder -> ";
+  t.Levelorder();
+  cout<<endl;
+
+  cout<<"Height -> ";
+  int h = t.Height();
+  cout<<h<<endl;
   return 0;
 }

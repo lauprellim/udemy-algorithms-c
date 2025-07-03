@@ -1,7 +1,5 @@
 #include<iostream>
 using namespace std;
-#ifdef queue-cpp.h
-#define queue-cpp.h
 
 class Node {
 public:
@@ -46,10 +44,3 @@ Node* Queue::dequeue() {
   }
   return x;
 }
-
-void Queue::display(){
-  for(int i = front+1; i<=rear; i++) cout<<Q[i]<<" ";
-  cout<<endl;
-}
-
-#endif /* queue-cpp.cpp */
