@@ -216,12 +216,37 @@ int sumElements(struct Node *root){
 int leafNodes(struct Node *root){
   int x=0, y=0;
   if(root == 0) return 0;
-  x = fun(root->lchild);
-  y = fun(root->rchild);
-  if(root->lchild == 0) return x+1;
-  else if(root->rchild == 0) return y+1;
-  return x+y;
+  x = leafNodes(root->lchild);
+  y = leafNodes(root->rchild);
+  if(root->lchild == NULL && root->rchild == NULL) return x+y+1;
+  else return x+y;
+  return 0;
 }
+
+// change condition and you can count nodes of degree 2
+int degree2(struct Node *root){
+  int x=0, y=0;
+  if(root == 0) return 0;
+  x = degree2(root->lchild);
+  y = degree2(root->rchild);
+  if(root->lchild && root->rchild) return x+y+1;
+  else return x+y;
+  return 0;
+}
+
+// change condition and you can count nodes of degree 2 & 1
+// that is, count ALL internal nodes
+int internalNodes(struct Node *root){
+  int x=0, y=0;
+  if(root == 0) return 0;
+  x = internalNodes(root->lchild);
+  y = internalNodes(root->rchild);
+  if(root->lchild || root->rchild) return x+y+1;
+  else return x+y;
+  return 0;
+}
+
+
 
 int main(){
   printf("Enter values of elements in a binary tree. Enter -1 to indicate leaf node.\n");
@@ -231,6 +256,8 @@ int main(){
   printf("Height of tree -> %d\n", height(root) );
   printf("Sum of elements -> %d\n", sumElements(root) );
   printf("Leaf Nodes -> %d\n", leafNodes(root) );
+  printf("Nodes of degree 2 -> %d\n", degree2(root) );
+  printf("All internal nodes -> %d\n", internalNodes(root) );
   
   return 0;
 }
