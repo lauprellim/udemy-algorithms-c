@@ -29,6 +29,20 @@ int BalanceFactor(struct Node *p){
   return hl - hr;
 }
 
+// find inorder predecessor --
+// return rightmost child of left subtree
+struct Node * InPre(struct Node *p){
+  while(p && p->rchild != NULL) p = p->rchild;
+  return p;
+}
+
+// find inorder successor
+// that means: return leftmost child of right subtree
+struct Node * InSucc(struct Node *p){
+  while(p && p->lchild != NULL) p = p->lchild;
+  return p;
+}
+
 struct Node * LLRotation(struct Node *p){
   printf("Performing LL rotation.\n");
   // use some pointers. you only need 2, we'll use 3.
@@ -199,6 +213,7 @@ void Postorder(struct Node *p){
 
 int main() {
 
+  printf("Inserting 10...\n");
   root = RInsert(root, 10);
   printf("Inorder -> "); Inorder(root); printf("\n");
   printf("Postorder -> "); Postorder(root); printf("\n\n");
@@ -224,6 +239,11 @@ int main() {
   printf("Postorder -> "); Postorder(root); printf("\n\n");
   
   RInsert(root, 5);  
+  printf("Inorder -> "); Inorder(root); printf("\n");
+  printf("Postorder -> "); Postorder(root); printf("\n\n");
+
+  printf("Deleting the root, 25!\n");
+  Delete(root, 25);
   printf("Inorder -> "); Inorder(root); printf("\n");
   printf("Postorder -> "); Postorder(root); printf("\n");
   
