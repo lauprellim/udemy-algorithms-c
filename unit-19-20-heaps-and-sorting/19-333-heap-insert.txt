@@ -1,0 +1,62 @@
+Max heap: each node is greater than its children
+Min heap: opposite
+The heap is represented as an array where each element
+in the array's parent is its index/2. The root of the
+tree is always the element at index 0 in the array.
+
+   We need to
+   insert new elements at a leaf node (as the heap is always
+   a complete tree), and then "swim" the new node up to the
+   appropriate level. This is not too hard to do.
+   We also need a temporary variable to store data that might
+   need to be moved higher or lower in the tree.
+
+   It takes log(n) time to insert a new value to its correct
+   node in the tree structure -- very good! For n elements,
+   it takes n log(n) time to insert them all.
+
+   You do not need an extra array to order elements in a heap.
+   In other words it is "in-place". Say you take an array of
+   7 elements, you start "sorting" them one-by-one from left
+   to right in the array.
+
+   Deleting elements from a heap...we delete the
+   highest-priority element from a heap -- that means
+   the root! The problem is that by deleting the root
+   element and rearranging the elements, you may wind
+   up with a tree that is not complete -- that is, a
+   tree with an empty leftmost node.
+
+   THe solution to this problem is to copy the last
+   element (that is the rightmost child) to the root.
+   This is easy to do because the rightmost child is
+   the last element in the array. Then compare children
+   of new root. THen compare larger element with root.
+   Interchange. The new rot node will "sink". Keep
+   comparing child nodes, find the greater child, and
+   interchange it. In this way the new root moves down
+   the tree (and consequently rightward in the array).
+
+   When elements are inserted, they "swim". When root is
+   deleted, you replace with the rightmost child , replace,
+   and then root "sinks".
+
+   A nodes' children are always located at positions
+   2i and 2i+1 in the array.
+
+You can store the deleted elements at the end of the array
+because there will be a free space. Then as you store the
+deleted elements (which are always the greatest in the tree),
+you get a SORTED array. This is called HEAP SORT...
+
+HEAP SORT:
+     1. Create heap of n elements.
+     2. Delete elements from the heap one by one.
+     3. Start copying elements in the free spaces at the end
+     	of the array.
+     4. Marvel in awe as you sort the array...
+
+How much time does heap sort take? Well, creating a heap
+takes n log(n) time. Deleting all elements (and sorting them)
+is also n log(n). So the time for heap sort is 2n log(n) which
+is obviously n log(n).
