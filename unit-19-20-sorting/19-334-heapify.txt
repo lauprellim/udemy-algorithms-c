@@ -16,3 +16,18 @@ subtrees.
 This only takes O(n) time which is much faster. It achieves this
 because -- as alluded to above -- we are not processing the
 leaf nodes at all, because -- THEY ARE HEAPS already!
+
+Heap is a great way to implement priority queue.
+
+If you just insert values into an array, it takes O(1) time. But
+then to find and delete highest value, you have to search
+through the array which takes O(n) time, then to delete it you
+have to move at worst ALL the elements to the left by one
+index value, so you have again O(n) time. SO this is actually
+O(2n) time which reduces to O(n) but still...not great.
+
+If you just insert all the elements into a heap, it takes only
+O(log n) time. Then you know that the largest element is the root,
+so deleting that only takes O(log n) time. So you have really
+improved drastically the speed of the operation from n time to
+log n time. Wow!
