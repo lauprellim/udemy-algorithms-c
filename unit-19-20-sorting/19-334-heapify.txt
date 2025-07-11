@@ -1,0 +1,18 @@
+Heapify works by starting at the leaf nodes and looking downward.
+Start at rightmost leaf node. That is a heap (it has no children!)
+Keep going leftwards through all the leaf nodes. They are all heaps!
+None of them have children! Half of our tree is a heap already!
+
+Let's say we jave a binady tree of degree 3 (root, children,
+grandchildren) -- 7 nodes only.
+ 
+Now go up one level (to leaf's parents). Compare it with children.
+Make a heap, swap elements as usual. Now work leftwards to left
+subtree. Make a heap.
+
+Finally go to root node. Is it a heap? Make a heap with the two
+subtrees.
+
+This only takes O(n) time which is much faster. It achieves this
+because -- as alluded to above -- we are not processing the
+leaf nodes at all, because -- THEY ARE HEAPS already!
