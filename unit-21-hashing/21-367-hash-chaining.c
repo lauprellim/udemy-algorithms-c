@@ -38,8 +38,16 @@ void Insert(struct Node *H[], int key){
 }
 
 /*
-void Display(struct Node *H[]){
-  
+void Display(struct Node *p, int n){
+  // outer loop prints out array
+  int i;
+  for(i = 0; i<n; i++){
+    if(p){
+      printf("%d ", p->data);
+      p=p->next;
+    }
+    else printf("/ \n");
+  }
 }
 */
 
@@ -59,6 +67,8 @@ int main(){
   // send index and key
   temp = Search(HT[hash(22)], 22);
 
+  // Display(HT, 10);
+  
   printf("Found: %d\n", temp->data);
   
   return 0;
