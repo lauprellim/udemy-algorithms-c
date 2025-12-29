@@ -2,7 +2,7 @@
 Asks for an array size, length, and elements.
 Then prints those elements.
 
-No check to see if size > length; this could cause memory allocation
+Checks to see if size > length; this could cause memory allocation
 problems!
 */
 
