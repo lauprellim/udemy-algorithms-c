@@ -1,6 +1,9 @@
 /*
 This program will normalize an array of integers in place.
 
+Be sure to compile using -lm to ensure the math library is linked.
+gcc normalize.c -o normalize -lm
+
 Given:
   - an array of ints
   - its length
